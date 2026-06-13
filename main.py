@@ -19,7 +19,7 @@ def email_que(email: str):
     PASSWORD = "oumw plqm vpnb kreo" 
 
         # SMTP setup
-    server = smtplib.SMTP("smtp.gmail.com", 587)
+    server = smtplib.SMTP("smtp.gmail.com", 465)
     server.starttls()
     server.login(EMAIL, PASSWORD)
     msg_temp = '''<!DOCTYPE html>

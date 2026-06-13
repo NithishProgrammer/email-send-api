@@ -3,6 +3,7 @@ import smtplib
 from fastapi import FastAPI, Depends, HTTPException , BackgroundTasks
 import fastapi
 from fastapi.middleware.cors import CORSMiddleware
+import socket
 
 
 app = fastapi.FastAPI()
@@ -15,6 +16,7 @@ app.add_middleware(
 )
 
 def email_que(email: str):
+
     EMAIL = "nithishanaricle@gmail.com"
     PASSWORD = "oumw plqm vpnb kreo" 
 
@@ -117,5 +119,10 @@ def email_que(email: str):
 
 @app.post("/send-mail")
 def send_mail(background_tasks: BackgroundTasks, email: str):
+    print("Resolving...")
+    print(socket.gethostbyname("smtp.gmail.com"))
+
+    print("Connecting...")
+    server = smtplib.SMTP("smtp.gmail.com", 587, timeout=10)
     background_tasks.add_task(email_que, email)
     return {"message": "Email is being sent in the background."}

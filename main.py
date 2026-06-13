@@ -4,6 +4,9 @@ from fastapi import FastAPI, Depends, HTTPException , BackgroundTasks
 import fastapi
 from fastapi.middleware.cors import CORSMiddleware
 import socket
+import requests
+
+
 
 
 app = fastapi.FastAPI()
@@ -121,6 +124,12 @@ def email_que(email: str):
     msg["To"] = email
     server.sendmail(EMAIL, email, msg.as_string())
     server.quit()
+
+
+@app.get("/test-net")
+def test_net():
+    r = requests.get("https://google.com")
+    return {"status": r.status_code}
 
 
 @app.post("/send-mail")

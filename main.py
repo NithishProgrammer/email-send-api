@@ -1,14 +1,20 @@
 from email.mime.text import MIMEText
 import smtplib
+from fastapi import FastAPI, Depends, HTTPException , BackgroundTasks
 import fastapi
+from fastapi.middleware.cors import CORSMiddleware
 
 
 app = fastapi.FastAPI()
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=["*"],
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
 
-
-@app.post("/send-mail")
-def send_mail(email: str):
-
+def email_que(email: str):
     EMAIL = "nithishanaricle@gmail.com"
     PASSWORD = "oumw plqm vpnb kreo" 
 
@@ -108,4 +114,8 @@ def send_mail(email: str):
     server.sendmail(EMAIL, email, msg.as_string())
     server.quit()
 
-    return {"message": "Email sent successfully"}
+
+@app.post("/send-mail")
+def send_mail(background_tasks: BackgroundTasks, email: str):
+    background_tasks.add_task(email_que, email)
+    return {"message": "Email is being sent in the background."}

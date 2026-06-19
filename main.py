@@ -6,13 +6,7 @@ import os
 
 app = FastAPI()
 
-app.add_middleware(
-    CORSMiddleware,
-    allow_origins=["*"],
-    allow_credentials=True,
-    allow_methods=["*"],
-    allow_headers=["*"],
-)
+
 
 EMAIL = "nithishanaricle@gmail.com"
 PASSWORD = "oumw plqm vpnb kreo"

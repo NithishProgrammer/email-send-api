@@ -14,8 +14,8 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
-EMAIL = os.getenv("EMAIL")
-PASSWORD = os.getenv("EMAIL_PASSWORD")
+EMAIL = "nithishanaricle@gmail.com"
+PASSWORD = "oumw plqm vpnb kreo"
 
 
 def email_que(email: str):

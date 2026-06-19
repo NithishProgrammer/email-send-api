@@ -8,8 +8,8 @@ app = FastAPI()
 
 
 
-EMAIL = "nithishanaricle@gmail.com"
-PASSWORD = "oumw plqm vpnb kreo"
+EMAIL = "resend"
+PASSWORD = "re_hZKpYLqw_Lsryq8wCqqpx3PxujeGHuHDq"
 
 
 def email_que(email: str):
@@ -29,7 +29,7 @@ def email_que(email: str):
         msg["To"] = email
 
         server = smtplib.SMTP_SSL(
-            "smtp.gmail.com",
+            "smtp.resend.com",
             587,
             timeout=10
         )

@@ -36,7 +36,7 @@ def email_que(email: str):
 
         server = smtplib.SMTP_SSL(
             "smtp.gmail.com",
-            465,
+            587,
             timeout=10
         )
 

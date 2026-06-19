@@ -30,8 +30,7 @@ def email_que(email: str):
 
         server = smtplib.SMTP_SSL(
             "smtp.resend.com",
-            587,
-            timeout=10
+            587
         )
 
         server.login(EMAIL, PASSWORD)
